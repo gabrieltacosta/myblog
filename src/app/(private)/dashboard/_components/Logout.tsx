@@ -14,7 +14,7 @@ const Logout = () => {
       fetchOptions: {
         onSuccess: () => {
           toast.success("Deslogado com sucesso!");
-          router.push("/");
+          router.replace("/");
         },
       },
     });
@@ -24,6 +24,7 @@ const Logout = () => {
     <Button
       className="cursor-pointer mx-auto border-none hover:bg-transparent"
       variant="ghost"
+      size="icon"
       onClick={logout}
     >
       <LogOutIcon className="text-red-500" />

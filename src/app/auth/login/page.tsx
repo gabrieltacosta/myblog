@@ -1,12 +1,12 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import LoginForm from "./_components/LoginForm";
 import { Metadata } from "next";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
-  title: "Entrar"
-}
+  title: "Entrar",
+};
 
 const LoginPage = async () => {
   const userSession = await auth.api.getSession({

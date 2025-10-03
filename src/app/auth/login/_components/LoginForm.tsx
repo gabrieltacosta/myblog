@@ -26,7 +26,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z
@@ -49,11 +49,14 @@ export default function LoginForm() {
     },
   });
 
+  const router = useRouter();
+
   const onSubmit = async (data: FormSchema) => {
     await signIn.email(
       {
         email: data.email,
         password: data.password,
+        callbackURL: "/dashboard",
       },
       {
         onRequest: () => {
@@ -64,7 +67,7 @@ export default function LoginForm() {
         },
         onSuccess: () => {
           toast.success("Login realizado com sucesso!");
-          redirect("/dashboard");
+          router.push("/dashboard");
         },
       }
     );
@@ -154,8 +157,7 @@ export default function LoginForm() {
       <CardFooter>
         <div className="flex justify-center w-full border-t py-4">
           <p className="text-center text-xs text-neutral-500">
-            Criado por{" "}
-            <span className="dark:text-white/70 underline">HawkDev.</span>
+            Criado por <span className="text-orange-400">HawkDev.</span>
           </p>
         </div>
       </CardFooter>
