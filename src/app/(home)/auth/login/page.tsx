@@ -17,7 +17,7 @@ const LoginPage = async () => {
     redirect("/dashboard");
   }
   return (
-    <div className="container mx-auto h-dvh flex flex-col items-center justify-center p-6">
+    <div className="container mx-auto flex flex-col flex-1 items-center justify-center p-6">
       <LoginForm />
     </div>
   );

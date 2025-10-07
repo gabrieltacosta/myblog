@@ -25,7 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronUp, User2 } from "lucide-react";
-import Logout from "./Logout";
+import Logout from "../../../components/Logout";
 
 import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth-client";

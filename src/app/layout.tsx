@@ -24,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${montserrat.className} antialiased`}>
+      <body
+        className={`${montserrat.className} antialiased`}
+        cz-shortcut-listen="true"
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

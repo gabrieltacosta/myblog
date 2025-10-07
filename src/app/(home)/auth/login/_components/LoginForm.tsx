@@ -66,6 +66,9 @@ export default function LoginForm() {
           toast.success("Login realizado com sucesso!");
           redirect("/dashboard");
         },
+        onError: () => {
+          toast.error("Erro ao realizar login, verifique suas credenciais!");
+        },
       }
     );
   };

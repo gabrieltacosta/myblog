@@ -14,7 +14,7 @@ const Logout = () => {
       fetchOptions: {
         onSuccess: () => {
           toast.success("Deslogado com sucesso!");
-          router.push("/");
+          router.replace("/");
         },
       },
     });
