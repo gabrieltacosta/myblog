@@ -10,6 +10,7 @@ import slugify from "slugify";
 interface PostProps {
   title: string;
   content: string;
+  imageCover: string
 }
 
 // Função para gerar um slug único
@@ -29,7 +30,7 @@ const generateUniqueSlug = async (title: string): Promise<string> => {
 };
 
 
-export async function createPost({ title, content }: PostProps): Promise<{ error?: string }> {
+export async function createPost({ title, content, imageCover }: PostProps): Promise<{ error?: string }> {
   try {
 
     const session = await auth.api.getSession({
@@ -48,6 +49,7 @@ export async function createPost({ title, content }: PostProps): Promise<{ error
         title,
         content,
         slug,
+        imageCover,
         authorId: session.user.id,
       },
     });
