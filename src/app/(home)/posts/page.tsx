@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import PostCard from "./_components/post-card";
+import Banner from "./_components/Banner";
 
 const PostsPage = async () => {
   const posts = await prisma.post.findMany({
@@ -14,20 +15,23 @@ const PostsPage = async () => {
     },
   });
 
+  const { title, slug, imageCover, content, author, createdAt } = posts[0];
+
   return (
     <div className="container mx-auto p-6">
-      <div className="max-w-2xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-4">
-          Bem-vindo ao Blog da Irmandade do Santíssimo Sacramento!
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          Aqui mergulhamos juntos na riqueza da Eucaristia, fonte e centro da
-          vida cristã.
-        </p>
-      </div>
+      {posts.length > 0 && (
+        <Banner
+          slug={slug}
+          title={title}
+          createdAt={createdAt}
+          content={content}
+          author={author.name}
+          imageCover={imageCover ? imageCover : ""}
+        />
+      )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
+      <div className="flex flex-col w-full mx-auto md:justify-between items-center sm:grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 mt-4 lg:mt-12">
+        {posts.slice(1).map((post) => (
           <PostCard
             key={post.id}
             slug={post.slug}

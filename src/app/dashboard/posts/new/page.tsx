@@ -124,14 +124,14 @@ export default function NewPost() {
           />
 
           <div className="grid gap-2">
-                <Label htmlFor="image">Imagem de perfil (opcional)</Label>
+                <Label htmlFor="image">Imagem de capa</Label>
                 <div className="flex items-end gap-4">
                   {imagePreview && (
                     <div className="relative w-16 h-16 rounded-sm overflow-hidden">
                       <Image
                         src={imagePreview}
                         alt="Profile preview"
-                        layout="fill"
+                        fill
                         objectFit="cover"
                       />
                     </div>
